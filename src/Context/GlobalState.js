@@ -8,19 +8,25 @@ export const GlobalContext = createContext()
 
 //! Provider Components
 const initialState = {
-    Wathlist : [],
-    Wathed : [],
+    watchlist : [],
+    Watched : [],
     
 }
 
-export const GlobalProvider = (props) => {
+export const GlobalProvider = ({children}) => {
     const [state,dispath] = useReducer(AppReducer, initialState)
-    console.log(state)
+//    console.log(state)
+
+    const addMovieToWatchlist = (movie) =>{
+        dispath({type: "ADD_MOVIE_TO_WATCHLIST",payload : movie})
+    }
+
     return( 
         <GlobalContext.Provider
         value={{
-            Ofeliya:"Developper"
+            watchlist:state.watchlist,
+            addMovieToWatchlist
         }}
-        >{props.children}</GlobalContext.Provider>
+        >{children}</GlobalContext.Provider>
     )
 }
