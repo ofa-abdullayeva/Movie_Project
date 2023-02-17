@@ -1,7 +1,7 @@
 import React from "react";
 import MovieControls from "./MovieControls";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie,type }) => {
   return (
     <div className="movie-card">
       <div className="overlay"></div>
@@ -14,7 +14,7 @@ const MovieCard = ({ movie }) => {
       ) : (
         <div className="filter-poster"></div>
       )}
-      <MovieControls movie={movie}/>
+      <MovieControls movie={movie} type={type}/>
     </div>
   );
 };
